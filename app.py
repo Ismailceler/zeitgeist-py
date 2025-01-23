@@ -11,14 +11,12 @@ url = os.getenv("TURSO_DATABASE_URL")
 auth_token = os.getenv("TURSO_AUTH_TOKEN")
 conn = libsql.connect("zeitgeist.db", sync_url=url, auth_token=auth_token)
 
-#conn.execute("CREATE TABLE IF NOT EXISTS sleep (id INTEGER PRIMARY KEY AUTOINCREMENT, start_day DATETIME NOT NULL, end_day DATETIME)")
+conn.execute("CREATE TABLE IF NOT EXISTS sleep (id INTEGER PRIMARY KEY AUTOINCREMENT, start_day DATETIME NOT NULL, end_day DATETIME)")
 #conn.execute("INSERT INTO sleep(start_day) VALUES('{0}')".format(datetime.now().strftime("%Y-%m-%d %H:%M")))
 #conn.execute("UPDATE sleep SET end_day = '{0}' WHERE end IS NULL".format(datetime.now().strftime("%Y-%m-%d %H:%M")))
-#conn.execute("CREATE TABLE IF NOT EXISTS buckets (id INTEGER PRIMARY KEY AUTOINCREMENT, bucket_name TEXT NOT NULL, shorthand TEXT NOT NULL)")
-#conn.execute("CREATE TABLE IF NOT EXISTS investments (id INTEGER PRIMARY KEY AUTOINCREMENT, day DATE NOT NULL, minutes INTEGER NOT NULL, bucket_ID INTEGER, FOREIGN KEY(bucket_ID) REFERENCES buckets(id))")
+conn.execute("CREATE TABLE IF NOT EXISTS buckets (id INTEGER PRIMARY KEY AUTOINCREMENT, bucket_name TEXT NOT NULL, shorthand TEXT NOT NULL)")
+conn.execute("CREATE TABLE IF NOT EXISTS investments (id INTEGER PRIMARY KEY AUTOINCREMENT, day DATE NOT NULL, minutes INTEGER NOT NULL, bucket_ID INTEGER, FOREIGN KEY(bucket_ID) REFERENCES buckets(id))")
 
-investments = conn.execute("select * from investments").fetchall()
-sleep = conn.execute("select * from sleep").fetchall()
 conn.commit()
 
 conn.sync()
