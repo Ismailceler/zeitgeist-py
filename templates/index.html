@@ -2,10 +2,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Zeitgeist</h1>
+<h1>Zeitgeist - Week {{weekdata[1]}} of {{weekdata[2]}}</h1>
 <form hx-post="/invest" name="invest" hx-target="body">
-<br>
-<hr>
 <input type="radio" name="minutes" value="5" id="five">
 <label for="five">5</label>
 <input type="radio" name="minutes" value="10" id="ten">
@@ -18,17 +16,30 @@
 <label for="fortyfive">45</label>
 <input type="radio" name="minutes" value="60" id="sixty">
 <label for="sixty">60</label>
-
 <br>
 <br>
-<input type="radio" name="bucket" value="hobby" id="hobby">
-<label for="hobby">hobby</label>
-<input type="radio" name="bucket" value="relaxiation" id="relaxiation">
-<label for="relaxiation">relaxiation</label>
-<br><br>
-<button type="submit">Submit</button></from>
+{%for bucket in buckets%}
+<input type="radio" name="bucket" value="{{bucket[0]}}" id="{{bucket[1]}}">
+<label for="{{bucket[1]}}">{{bucket[1]}}</label>
+{%endfor%}
+<br>
+<br>
+<button type="submit">Invest</button></from>
 <hr>
-{% for z in zg %}
-<p id="formular"> {{z[0]}} - {{z[1]}}</p>
+
+<table>
+    <tr>
+      <th>Date</th>
+      <th>Minutes</th>
+      <th>Bucket</th>
+    </tr>
+{% for investment in investments %}
+    <tr>
+        <td>{{weekdata[0]}}</td>
+        <td>{{investment[2]}}</td>
+        <td>{{investment[3]}}</td>
+      </tr>
 {% endfor %}
+</table>
+
 {% endblock content %}

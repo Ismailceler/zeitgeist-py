@@ -8,10 +8,11 @@
     {% assets 'js' %}
       <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
-    
+    <style>body {width: 1000px; margin: 0 auto;}</style>
     <title>Zeitgeist</title>
+
   </head>
-  <body class="bg-blue-100">
+    <body>
     {% block content %}
     {% endblock content %}
   </body>
