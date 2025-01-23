@@ -10,3 +10,22 @@ htmlcov/
 docs/_build/
 .env
 *.db*
+*.pyc
+*.swp
+*.un~
+
+/.tox
+/LOCAL_TODO*
+
+# IDEs
+/flask-assets.wpr
+/.idea/*
+
+# distutils stuff
+/build/
+/dist/
+/src/Flask_Assets.egg-info/
+venv
+tests/static
+.eggs/
+.webassets-cache/
