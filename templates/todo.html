@@ -1,0 +1,16 @@
+
+{% if todos|length>0 %}
+  {% for todo in todos %}
+    <tr >
+      <td>{{todo.id}}</td>
+      <td>{{todo.title}}</td>
+      <td>
+        {% if todo.completed %}
+          <span>Yes</span>
+        {% else %}
+          <span>No</span>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+{% endif %}

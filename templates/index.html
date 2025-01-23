@@ -1,0 +1,34 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Zeitgeist</h1>
+<form hx-post="/invest" name="invest" hx-target="body">
+<br>
+<hr>
+<input type="radio" name="minutes" value="5" id="five">
+<label for="five">5</label>
+<input type="radio" name="minutes" value="10" id="ten">
+<label for="ten">10</label>
+<input type="radio" name="minutes" value="15" id="fifteen">
+<label for="five">15</label>
+<input type="radio" name="minutes" value="30" id="thirty">
+<label for="thirty">30</label>
+<input type="radio" name="minutes" value="45" id="fortyfive">
+<label for="fortyfive">45</label>
+<input type="radio" name="minutes" value="60" id="sixty">
+<label for="sixty">60</label>
+
+<br>
+<br>
+<input type="radio" name="bucket" value="hobby" id="hobby">
+<label for="hobby">hobby</label>
+<input type="radio" name="bucket" value="relaxiation" id="relaxiation">
+<label for="relaxiation">relaxiation</label>
+<br><br>
+<button type="submit">Submit</button></from>
+<hr>
+{% for z in zg %}
+<p id="formular"> {{z[0]}} - {{z[1]}}</p>
+{% endfor %}
+{% endblock content %}
