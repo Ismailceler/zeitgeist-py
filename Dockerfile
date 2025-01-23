@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.10
 
 # Run in unbuffered mode
 ENV PYTHONUNBUFFERED=1 
