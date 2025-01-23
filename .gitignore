@@ -28,4 +28,4 @@ docs/_build/
 venv
 tests/static
 .eggs/
-.webassets-cache/
+static/.webassets-cache
